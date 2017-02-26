@@ -1,0 +1,37 @@
+.btn {
+    color: #ffffff;
+    display: inline-block;
+    padding: 6px 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    margin: 10px 6px 20px;
+}
+
+.btn-green{
+    background-color: #5CD195;
+}
+
+.btn-red{
+    background-color: #911A1E;
+    margin-right: 0;
+
+}
+
+.operation{
+    font-size: 0.75em;
+    font-weight: 800;
+    padding-left: 3px;
+    vertical-align: 2px;
+}

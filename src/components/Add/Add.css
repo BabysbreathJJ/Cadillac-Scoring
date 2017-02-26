@@ -1,0 +1,51 @@
+.add-panel{
+    position: absolute;
+    width: 100%;
+    min-height: 90px;
+    overflow-y: auto;
+    top:110px;
+    left: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px 5px #9da0a4;
+;
+}
+
+.add-panel input[type='text']{
+    height: 25px;
+    padding: 0 2px;
+    width: 5.5%;
+    margin: 5px;
+}
+
+.display-none{
+    /*display: none;*/
+    visibility: hidden;
+}
+
+.add-panel textarea{
+    width: 34.4%;
+    height: 60px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin-bottom: -30px;
+}
+
+.evaluationPrj{
+    width: 10%;
+}
+
+.margin-pics{
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+.margin-right-10{
+ margin-right: 10px;
+}
+
+.margin-top-10{
+    margin-top: 10px;
+}

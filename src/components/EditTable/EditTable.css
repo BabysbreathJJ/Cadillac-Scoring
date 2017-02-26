@@ -1,0 +1,48 @@
+th{
+    background-color: #33363B;
+    color: #ffffff;
+    height:30px;
+    padding: 10px 15px;
+}
+td{
+    border: 1px solid #ddd;
+    height: 60px;
+    /*padding: 5px 10px;*/
+    /*overflow-x: hidden;*/
+}
+pre{
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 360px;
+    margin: 0;
+}
+table{
+    border-collapse: collapse;
+    font-size: 12px;
+    width: 100%;
+}
+
+.position-relative{
+    position: relative;
+}
+
+.pics{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+input[type='text']{
+    height: 25px;
+    padding: 0 2%;
+    width: 96%;
+}
+
+textarea{
+    height: 96%;
+    width: 96%;
+    padding: 0 2%;
+    resize: none;
+    /*padding: 0 4%;*/
+}
