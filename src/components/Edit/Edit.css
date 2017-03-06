@@ -10,3 +10,8 @@
 .margin-left-0{
     margin-left: 0px;
 }
+
+.edit-link{
+    text-decoration: none;
+    margin-left: -5px;
+}

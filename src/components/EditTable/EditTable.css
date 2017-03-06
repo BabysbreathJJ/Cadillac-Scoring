@@ -4,9 +4,11 @@ th{
     height:30px;
     padding: 10px 15px;
 }
-td{
+.editTable td{
     border: 1px solid #ddd;
     height: 60px;
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
     /*padding: 5px 10px;*/
     /*overflow-x: hidden;*/
 }

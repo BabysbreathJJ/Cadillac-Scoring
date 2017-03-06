@@ -9,7 +9,7 @@ class Picture extends Component {
     render() {
         return (
             <div className="display-inline-block pic">
-                { this.props.src ?<img src={process.env.PUBLIC_URL+this.props.src}/> : null}
+                { this.props.src ?<img src={process.env.PUBLIC_URL+this.props.src} alt="标准图片"/> : null}
                 { this.props.edit ? <i className="fa fa-minus-circle delete-icon"></i> : null }
             </div>
         );

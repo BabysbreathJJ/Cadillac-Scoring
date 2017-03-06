@@ -18,6 +18,13 @@
     margin: 5px;
 }
 
+.add-panel select{
+    height: 25px;
+    padding: 0 2px;
+    width: 6.3%;
+    margin: 5px;
+}
+
 .display-none{
     /*display: none;*/
     visibility: hidden;
