@@ -6,71 +6,46 @@ import Button from '../Button/Button';
 import EditTable from '../EditTable/EditTable';
 import '../EditTable/EditTable.css';
 import '../Button/Button.css';
-import './Edit.css'
+import './Edit.css';
+import {Link} from 'react-router';
+import Page from '../Page/Page'
+import '../Page/Page.css'
+
 
 class Edit extends Component {
     constructor(props) {
         super(props);
-        //this.onChange = this.onChange.bind(this);
-        //this.edit = this.edit.bind(this);
-        this.getSelectedItems = this.getSelectedItems.bind(this);
-        this.goDisplay = this.goDisplay.bind(this);
-        this.state = {
-            ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
-            items: [{
-                id: 1.1,
-                module: '展厅',
-                area: '单透',
-                point: '2',
-                evaluateItem: '左侧单透使用品牌',
-                evaluateStandard: '1.左侧单透使用' + '\n' + '2.画面平整安装,这是一个很长的句子,这是一个很长的句子,这是一个很长的句子,是为了测试\n3.洽谈桌仅放置一个方形花环.,插白色百合,这是一个很长的句子,是为了测试',
-                pictures: ['display.jpg', 'display.jpg', 'display.jpg']
-            }, {
-
-                id: 1.2,
-                module: '展厅',
-                area: '单透',
-                point: '2',
-                evaluateItem: '左侧单透使用品牌',
-                evaluateStandard: '左侧单透使用',
-                pictures: ['display.jpg', 'display.jpg']
-
-            }
-            ],
-            selectedItems: [],
-            updateItems: []
-        };
     }
 
-    getSelectedItems(result) {
-        this.setState({
-            selectedItems: result.selectedItems,
-            updateItems: result.submitResult
-        });
-        console.log(result);
-        console.log(result.submitResult);
-        console.log(result.submitResult[result.selectedItems[0]]);
-
+    componentDidMount() {
+        //this.props.getTableData(9, 1);
+        this.props.goPage(9, this.props.params.page);
     }
 
-    goDisplay() {
-        this.props.router.push('/display');
-    }
 
     render() {
         return (
             <div className="display-panel">
                 <div>
                     <Button className="btn btn-green margin-left-0" icon="fa fa-trash fa-lg"/>
-                    <Button className="btn btn-green" icon="fa fa-pencil-square-o fa-lg"/>
+                    <Link className="edit-link" to={{pathname:'/display'}}> <Button className="btn btn-green"
+                                                                                    icon="fa fa-pencil-square-o fa-lg"/></Link>
                     <Button className="btn btn-green" icon="fa fa-external-link fa-lg" name="提交"
-                            onClick={this.goDisplay}/>
+                            onClick={this.props.updateTableData.bind(this,this.props.selectedItems)}
+                    />
                     <Button className="btn btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"/>
                 </div>
-                <EditTable ths={this.state.ths} items={this.state.items} callbackParent={this.getSelectedItems}/>
+                <EditTable ths={this.props.ths} tableData={this.props.tableData} initialValues={this.props.tableData}
+                           onSelectItem={this.props.onSelectItem} onModifyTable={this.props.onModifyTable}/>
+                <Page currentPage={this.props.currentPage} goPage={this.props.goPage} goLeftPage={this.props.goLeftPage}
+                      goRightPage={this.props.goRightPage}
+                      totalPages={this.props.totalPages} startPage={this.props.startPage}/>
             </div>
         )
 
     }
+
 }
+
+
 export default Edit;

@@ -1,0 +1,29 @@
+.page {
+    float: right;
+}
+
+.page .btn {
+    margin: 10px 0;
+    width: 30px;
+}
+
+.page .btn:hover {
+    cursor: pointer;
+}
+
+.page .btn:active{
+    background-color: #3d9970;
+}
+
+.page .arrow {
+    padding: 6px 10px;
+}
+
+.page i {
+    font-style: normal;
+    font-weight: lighter;
+}
+
+.btn-clicked{
+    background-color: #3d9970;
+}
