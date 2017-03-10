@@ -30,20 +30,20 @@ function changePage() {
     //    localStorage.selectedItems = JSON.stringify(storedItems);
     //}
 
-    if (store.getState().getIn(['tabledata', 'selectedItems']).toJS()) {
-        alert("请先提交当前页修改!");
-        return false;
-    }
+    // if (store.getState().getIn(['tabledata', 'selectedItems']).toJS()) {
+    //     alert("请先提交当前页修改!");
+    //     return false;
+    // }
 
-    window.location.reload();
+    // window.location.reload();
 }
 
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path="/" component={Display}>
-                <IndexRoute component={Display}/>
+            <Route path="/" component={DisplayContainer}>
+                <IndexRoute component={DisplayContainer}/>
             </Route>
             <Router path="/login" component={Login}/>
             <Router path="/display" component={DisplayContainer} onChange={changePage}/>
