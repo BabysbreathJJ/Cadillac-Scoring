@@ -17,7 +17,8 @@ class EditTable extends Component {
         this.handleEvaluateChange = this.handleEvaluateChange.bind(this);
         this.state = {
             selectedItems: [],
-            submitResult: []
+            submitResult: [],
+            items: this.props.items
         }
     }
 
@@ -86,6 +87,7 @@ class EditTable extends Component {
         const pics = {
             padding: '5px 0px'
         };
+        console.log(this.props.items);
         return (
 
             <table>
@@ -100,22 +102,23 @@ class EditTable extends Component {
                 </thead>
                 <tbody>
                 {
-                    this.props.items.map((item, index)=>(
+
+                    this.state.items.map((item, index)=>(
                         <tr key={index}>
                             <td width="7%"><input id={item.id} type="checkbox" onChange={this.handleChange}/><label
                                 htmlFor={item.id}>{item.id}</label></td>
-                            <td width="7%"><input type="text" defaultValue={item.module}
-                                                  onChange={this.handleModuleChange.bind(this,item.id)}/></td>
-                            <td width="7%"><input type="text" defaultValue={item.area}
+                            <td width="7%"><input type="text" value={item.region.module.name}
+                                                  onChange={this.handleModuleChange.bind(this,item.region.module.name)}/></td>
+                            <td width="7%"><input type="text" value={item.region.name}
                                                   onChange={this.handleAreaChange}/></td>
-                            <td width="7%"><input type="text" defaultValue={item.point}
+                            <td width="7%"><input type="text" value={item.score}
                                                   onChange={this.handlePointChange}/></td>
-                            <td width="16%"><input type="text" defaultValue={item.evaluateItem}
+                            <td width="16%"><input type="text" value={item.item}
                                                    onChange={this.handleEvaluateChange}/></td>
                             <td width="36%">
                                 <textarea
                                     onChange={this.handleStandardChange}
-                                    defaultValue={item.evaluateStandard}/>
+                                    value={item.standard}/>
                             </td>
                             <td width="20%" style={pics}>
                                 <div className="position-relative">
@@ -126,12 +129,9 @@ class EditTable extends Component {
                                         return rows;
                                     })([], 3)}
                                     <div className="pics">
-                                        {
-                                            item.pictures.map((picture, index)=>(
-                                                <Picture src={picture} key={index} edit="true"/>
-
-                                            ))
-                                        }
+                                        <Picture src={item.picurl1}/>
+                                        <Picture src={item.picurl2}/>
+                                        <Picture src={item.picurl3}/>
                                     </div>
                                 </div>
                             </td>

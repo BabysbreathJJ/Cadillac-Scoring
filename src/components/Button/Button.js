@@ -7,7 +7,7 @@ import './Button.css';
 class Button extends Component {
     render() {
         return (
-            <button {...this.props}><i className={this.props.icon}><span className={(this.props.name)?"operation":""}>{this.props.name}</span></i></button>
+            <button {...this.props}><i className={this.props.icon} name={this.props.name}><span name={this.props.name} className={(this.props.name)?"operation":""}>{this.props.name}</span></i></button>
         );
     }
 }

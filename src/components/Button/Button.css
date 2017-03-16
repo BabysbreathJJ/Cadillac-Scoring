@@ -1,4 +1,4 @@
-.btn {
+.btn, .btn-page{
     color: #ffffff;
     display: inline-block;
     padding: 6px 6px;
@@ -19,6 +19,10 @@
     margin: 10px 6px 20px;
 }
 
+.btn-selected{
+    background-color: #21754a;
+}
+
 .btn-green{
     background-color: #5CD195;
 }
@@ -34,4 +38,8 @@
     font-weight: 800;
     padding-left: 3px;
     vertical-align: 2px;
+}
+
+.btn-page{
+    margin: 10px 0px 20px;
 }

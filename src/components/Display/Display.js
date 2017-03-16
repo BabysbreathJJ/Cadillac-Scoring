@@ -8,6 +8,10 @@ import '../EditTable/EditTable.css';
 import '../Button/Button.css';
 import './Display.css'
 import Add from '../Add/Add'
+import Page from '../Page/Page';
+import $ from 'jquery';
+import {BaseUrl, SizePerPage} from '../Constants/constants';
+import axios from 'axios';
 
 class Display extends Component {
     constructor(props) {
@@ -17,29 +21,16 @@ class Display extends Component {
         this.selectedItems = this.selectedItems.bind(this);
         this.goEdit = this.goEdit.bind(this);
         this.showAdd = this.showAdd.bind(this);
+        this.changePage = this.changePage.bind(this);
+        this.prevPage = this.prevPage.bind(this);
+        this.nextPage = this.nextPage.bind(this);
         this.state = {
             showAdd: false,
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
-            items: [{
-                id: 1.1,
-                module: '展厅',
-                area: '单透',
-                point: '2',
-                evaluateItem: '左侧单透使用品牌',
-                evaluateStandard: '1.左侧单透使用' + '\n' + '2.画面平整安装,这是一个很长的句子,这是一个很长的句子,这是一个很长的句子,是为了测试\n3.洽谈桌仅放置一个方形花环.,插白色百合,这是一个很长的句子,是为了测试',
-                pictures: ['display.jpg', 'display.jpg', 'display.jpg']
-            }, {
-
-                id: 1.2,
-                module: '展厅',
-                area: '单透',
-                point: '2',
-                evaluateItem: '左侧单透使用品牌',
-                evaluateStandard: '左侧单透使用',
-                pictures: ['display.jpg', 'display.jpg']
-
-            }
-            ]
+            items: [],
+            selectedItems: {},
+            pageno: 1,
+            totalpage: 1
         };
     }
 
@@ -47,7 +38,11 @@ class Display extends Component {
         this.setState({
             selectedItems: items
         });
-        alert(items);
+        alert(JSON.stringify(items));
+        for(var key in items)
+        {
+            console.log(key);
+        }
     }
 
     goEdit() {
@@ -58,6 +53,60 @@ class Display extends Component {
         this.setState({
             showAdd: !this.state.showAdd
         });
+    }
+
+    changePage(i){
+        console.log("pageno: " +  i);
+        console.log("totalpage: " + this.state.totalpage);
+        this.changePageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: i}, function (response) {
+            this.setState({
+                pageno: i,
+                items: response.data,
+                selectedItems: []
+            });
+        }.bind(this));
+    }
+    componentDidMount(){
+        this.questionsRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page:1}, function (response) {
+            //console.log(response);
+            var totalpage = response.totalpages;
+            this.setState({
+                items: response.data,
+                totalpage: totalpage
+            });
+        }.bind(this));
+    }
+
+    prevPage(){
+        if(this.state.pageno === 1)
+            return;
+        this.prevPageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: this.state.pageno - 1}, function (response) {
+            var totalpage = response.totalpages;
+            this.setState({
+                items: response.data,
+                totalpage: totalpage,
+                pageno: this.state.pageno - 1
+            });
+        }.bind(this));
+    }
+
+    nextPage(){
+        console.log("pageno: " + typeof  this.state.pageno);
+        console.log("totalpage: " + typeof this.state.totalpage);
+        if(this.state.pageno === this.state.totalpage)
+            return;
+        this.nextPageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: this.state.pageno + 1}, function (response) {
+            var totalpage = response.totalpages;
+            this.setState({
+                items: response.data,
+                totalpage: totalpage,
+                pageno: this.state.pageno + 1
+            });
+        }.bind(this));
+    }
+    componentWillUnmount(){
+        this.questionsRequest.abort();
+        this.changePageRequest.abort();
     }
 
     render() {
@@ -72,6 +121,8 @@ class Display extends Component {
                             onClick={this.showAdd}/>
                 </div>
                 <DisplayTable ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
+                <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage} nextPage={this.nextPage}
+                      totalpage={this.state.totalpage}/>
             </div>
         )
 

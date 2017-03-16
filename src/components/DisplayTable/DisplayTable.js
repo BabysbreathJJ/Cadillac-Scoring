@@ -10,21 +10,24 @@ import DefaultPic from '../Picture/DefaultPic'
 class DisplayTable extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props.items);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            selectedItems: []
+            selectedItems: {}
         }
     }
 
     handleChange(e) {
         var selectedItems = this.state.selectedItems;
         if (e.target.checked) {
-            selectedItems.push(e.target.id);
+            selectedItems[e.target.id]= e.target.id;
+            e.target.checked=true;
             this.setState({selectedItems: selectedItems});
         }
         else {
-            let index = this.state.selectedItems.indexOf(e.target.id);
-            selectedItems.splice(index, 1);
+           if(selectedItems[e.target.id]){
+               delete selectedItems[e.target.id];
+           }
             this.setState({selectedItems: selectedItems});
         }
         this.props.callbackParent(selectedItems);
@@ -52,23 +55,21 @@ class DisplayTable extends Component {
                 {
                     this.props.items.map((item, index)=>(
                         <tr key={index}>
-                            <td width="7%"><input id={item.id} type="checkbox" onChange={this.handleChange}/><label
+                            <td width="7%"><input id={item.id} type="checkbox" checked={this.state.selectedItems[item.id]?true: false} onChange={this.handleChange}/><label
                                 htmlFor={item.id}>{item.id}</label></td>
-                            <td width="7%">{item.module}</td>
-                            <td width="7%">{item.area}</td>
-                            <td width="7%">{item.point}</td>
-                            <td width="16%">{item.evaluateItem}</td>
+                            <td width="7%">{item.region.module.name}</td>
+                            <td width="7%">{item.region.name}</td>
+                            <td width="7%">{item.score}</td>
+                            <td width="16%">{item.item}</td>
                             <td width="36%">
-                                <pre>{item.evaluateStandard}</pre>
+                                <pre>{item.standard}</pre>
                             </td>
                             <td width="20%" style={pics}>
                                 <div className="position-relative">
-                                        {
-                                            item.pictures.map((picture, index)=>(
-                                                <Picture src={picture} key={index}/>
+                                    <Picture src={item.picurl1}/>
+                                    <Picture src={item.picurl2}/>
+                                    <Picture src={item.picurl3}/>
 
-                                            ))
-                                        }
                                 </div>
                             </td>
                         </tr>
