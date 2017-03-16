@@ -24,13 +24,16 @@ class Display extends Component {
         this.changePage = this.changePage.bind(this);
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
         this.state = {
             showAdd: false,
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
             items: [],
             selectedItems: {},
             pageno: 1,
-            totalpage: 1
+            totalpage: 1,
+            policy: {},
+
         };
     }
 
@@ -75,6 +78,13 @@ class Display extends Component {
                 totalpage: totalpage
             });
         }.bind(this));
+        this.policyRequest = $.get("http://112.74.49.183:8080/POSMPlatform/file/policy", function (response, status) {
+            // if(status === "success")
+            //     alert("get policy success");
+            this.setState({
+                policy: response
+            });
+        }.bind(this));
     }
 
     prevPage(){
@@ -106,13 +116,42 @@ class Display extends Component {
     }
     componentWillUnmount(){
         this.questionsRequest.abort();
-        this.changePageRequest.abort();
+        //this.changePageRequest.abort();
     }
 
+    uploadImage(file){
+        var policy = this.state.policy;
+        var data = new FormData();
+        data.append("key", policy.dir + file.name);
+        data.append("policy", policy.policy);
+        data.append("OSSAccessKeyId", policy.accessid);
+        data.append("success_action_status", 200);
+        data.append("signature",policy.signature);
+        data.append("file", file);
+        $.ajax({
+            url: policy.host,
+            data: data,
+            processData: false,
+            cache: false,
+            async: true,
+            contentType: false,
+            //关键是要设置contentType 为false，不然发出的请求头 没有boundary
+            //该参数是让jQuery去判断contentType
+            type: "POST",
+            success: function (data, textStatus) {
+                if (textStatus === "success") {
+
+                    alert("success!");
+                } else {
+                    alert("upload image failed");
+                }
+            }
+        });
+    }
     render() {
         return (
             <div className="display-panel">
-                {this.state.showAdd ? <Add/> : null}
+                {this.state.showAdd ? <Add uploadImage={this.uploadImage}/> : null}
                 <div>
                     <Button className="btn btn-green margin-left-0" icon="fa fa-trash fa-lg"/>
                     <Button className="btn btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goEdit}/>

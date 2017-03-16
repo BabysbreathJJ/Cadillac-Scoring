@@ -11,7 +11,7 @@ class EditTable extends Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleStandardChange = this.handleStandardChange.bind(this);
-        //this.handleModuleChange = this.handleModuleChange.bind(this);
+        this.handleModuleChange = this.handleModuleChange.bind(this);
         this.handleAreaChange = this.handleAreaChange.bind(this);
         this.handlePointChange = this.handlePointChange.bind(this);
         this.handleEvaluateChange = this.handleEvaluateChange.bind(this);
@@ -51,24 +51,19 @@ class EditTable extends Component {
     }
 
 
-    handleModuleChange(id, e) {
+    handleModuleChange(index, e) {
         //console.log(e.target.value);
         //console.log(id);
-        if (this.state.submitResult[id]) {
-            this.state.submitResult[id].module = e.target.value;
-        }
-        else {
-            this.state.submitResult[id] = {};
-            this.state.submitResult[id].id = id;
-            this.state.submitResult[id].module = e.target.value;
-        }
-
-        this.setState({submitResult: this.state.submitResult});
+        var items = this.state.items;
+        items[index].region.module.name = e.target.value;
+        this.setState({
+            items: items
+        });
 
     }
 
-    handleAreaChange(e) {
-        console.log(e.target.value);
+    handleAreaChange(e, index) {
+
     }
 
     handlePointChange(e) {
@@ -87,7 +82,6 @@ class EditTable extends Component {
         const pics = {
             padding: '5px 0px'
         };
-        console.log(this.props.items);
         return (
 
             <table>
@@ -103,21 +97,21 @@ class EditTable extends Component {
                 <tbody>
                 {
 
-                    this.state.items.map((item, index)=>(
+                    this.props.items.map((item, index)=>(
                         <tr key={index}>
                             <td width="7%"><input id={item.id} type="checkbox" onChange={this.handleChange}/><label
                                 htmlFor={item.id}>{item.id}</label></td>
                             <td width="7%"><input type="text" value={item.region.module.name}
-                                                  onChange={this.handleModuleChange.bind(this,item.region.module.name)}/></td>
+                                                  onChange={(event) => this.props.changeContent(2, index, event.target.value)}/></td>
                             <td width="7%"><input type="text" value={item.region.name}
-                                                  onChange={this.handleAreaChange}/></td>
+                                                  onChange={(event) => this.props.changeContent(3, index, event.target.value)}/></td>
                             <td width="7%"><input type="text" value={item.score}
-                                                  onChange={this.handlePointChange}/></td>
+                                                  onChange={(event) => this.props.changeContent(4, index, event.target.value)}/></td>
                             <td width="16%"><input type="text" value={item.item}
-                                                   onChange={this.handleEvaluateChange}/></td>
+                                                   onChange={(event) => this.props.changeContent(5, index, event.target.value)}/></td>
                             <td width="36%">
                                 <textarea
-                                    onChange={this.handleStandardChange}
+                                    onChange={(event) => this.props.changeContent(6, index, event.target.value)}
                                     value={item.standard}/>
                             </td>
                             <td width="20%" style={pics}>

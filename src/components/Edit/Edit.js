@@ -21,6 +21,7 @@ class Edit extends Component {
         this.changePage = this.changePage.bind(this);
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
+        this.changeContent = this.changeContent.bind(this);
         this.state = {
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
             items: [],
@@ -60,6 +61,7 @@ class Edit extends Component {
         this.questionsRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page:1}, function (response) {
             //console.log(response);
             var totalpage = response.totalpages;
+            console.log("edit: ", response.data);
             this.setState({
                 items: response.data,
                 totalpage: totalpage
@@ -96,7 +98,31 @@ class Edit extends Component {
     }
     componentWillUnmount(){
         this.questionsRequest.abort();
-        this.changePageRequest.abort();
+        //this.changePageRequest.abort();
+    }
+
+    changeContent(type, index, value){
+        var items = this.state.items;
+        switch(type){
+            case 2:
+                items[index].region.module.name = value;
+                break;
+            case 3:
+                items[index].region.name = value;
+                break;
+            case 4:
+                items[index].score = value;
+                break;
+            case 5:
+                items[index].item = value;
+                break;
+            case 6:
+                items[index].standard = value;
+                break;
+        }
+        this.setState({
+            items: items
+        });
     }
 
     render() {
@@ -109,7 +135,7 @@ class Edit extends Component {
                             onClick={this.goDisplay}/>
                     <Button className="btn btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"/>
                 </div>
-                <EditTable ths={this.state.ths} items={this.state.items} callbackParent={this.getSelectedItems}/>
+                <EditTable ths={this.state.ths} items={this.state.items} callbackParent={this.getSelectedItems} changeContent={this.changeContent}/>
                 <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage} nextPage={this.nextPage}
                       totalpage={this.state.totalpage}/>
             </div>
