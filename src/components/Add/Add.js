@@ -6,6 +6,8 @@ import './Add.css';
 import DefaultPic from '../Picture/DefaultPic'
 import '../Button/Button.css';
 import Button from '../Button/Button';
+import Dropzone from 'react-dropzone';
+import FileDropzone from './FileDropzone';
 
 class Add extends Component {
     constructor(props){
@@ -58,9 +60,9 @@ class Add extends Component {
                     <input type="text" style={{width:'13.7%'}}/>
                     <textarea />
                     <div className="display-inline-block margin-pics">
-                        <DefaultPic/>
-                        <DefaultPic/>
-                        <DefaultPic/>
+                        <FileDropzone/>
+                        <FileDropzone/>
+                        <FileDropzone/>
                     </div>
                 </div>
                 <div className="display-right margin-right-10 margin-top-10">

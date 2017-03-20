@@ -18,6 +18,7 @@ const tableReducers = handleActions({
     // 当使用者按送出按钮，发出 GET_GITHUB_SUCCESS action 时将接收到的资料 merge
     GET_TABLE_DATA_SUCCESS: (state, { payload }) => {
 
+        
         return state.merge({
             'tableData': payload.data.data,
             'totalPages': payload.data.totalpages,
