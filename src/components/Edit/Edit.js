@@ -222,6 +222,7 @@ class Edit extends Component {
                 }
                 break;
             case 3:
+                console.log(value);
                 items[index].region.name = value;
                 if (foundIndex == -1) {
                     submitResult.push(items[index]);
