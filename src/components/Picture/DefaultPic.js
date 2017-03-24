@@ -8,9 +8,8 @@ import './Picture.css';
 class DefaultPic extends Component {
     render() {
         return (
-            <div className="display-inline-block">
-                <div className="display-inline-block pic-default"><i className="fa fa-camera fa-lg icon-center"></i></div>
-            </div>
+
+            <div className="display-inline-block pic-default"><i className="fa fa-camera fa-lg icon-center"></i></div>
         );
     }
 }

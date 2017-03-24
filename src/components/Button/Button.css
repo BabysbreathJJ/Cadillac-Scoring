@@ -1,4 +1,4 @@
-.btn, .btn-page{
+.my-btn, .my-btn-page {
     color: #ffffff;
     display: inline-block;
     padding: 6px 6px;
@@ -17,29 +17,30 @@
     background-image: none;
     border: 1px solid transparent;
     margin: 10px 6px 20px;
+    outline: none;
 }
 
-.btn-selected{
+.my-btn-selected {
     background-color: #21754a;
 }
 
-.btn-green{
+.my-btn-green {
     background-color: #5CD195;
 }
 
-.btn-red{
+.my-btn-red {
     background-color: #911A1E;
     margin-right: 0;
 
 }
 
-.operation{
+.operation {
     font-size: 0.75em;
     font-weight: 800;
     padding-left: 3px;
     vertical-align: 2px;
 }
 
-.btn-page{
+.my-btn-page {
     margin: 10px 0px 20px;
 }

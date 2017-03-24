@@ -24,7 +24,7 @@ class Display extends Component {
         this.changePage = this.changePage.bind(this);
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
-        this.uploadImage = this.uploadImage.bind(this);
+        //this.uploadImage = this.uploadImage.bind(this);
         this.state = {
             showAdd: false,
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
@@ -42,8 +42,7 @@ class Display extends Component {
             selectedItems: items
         });
         alert(JSON.stringify(items));
-        for(var key in items)
-        {
+        for (var key in items) {
             console.log(key);
         }
     }
@@ -58,19 +57,26 @@ class Display extends Component {
         });
     }
 
-    changePage(i){
-        console.log("pageno: " +  i);
+    changePage(i) {
+        console.log("pageno: " + i);
         console.log("totalpage: " + this.state.totalpage);
-        this.changePageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: i}, function (response) {
+        this.changePageRequest = $.get(BaseUrl + "questions/current/bypage", {
+            size: SizePerPage,
+            page: i
+        }, function (response) {
             this.setState({
                 pageno: i,
                 items: response.data,
-                selectedItems: []
+                selectedItems: {}
             });
         }.bind(this));
     }
-    componentDidMount(){
-        this.questionsRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page:1}, function (response) {
+
+    componentDidMount() {
+        this.questionsRequest = $.get(BaseUrl + "questions/current/bypage", {
+            size: SizePerPage,
+            page: 1
+        }, function (response) {
             //console.log(response);
             var totalpage = response.totalpages;
             this.setState({
@@ -87,10 +93,13 @@ class Display extends Component {
         }.bind(this));
     }
 
-    prevPage(){
-        if(this.state.pageno === 1)
+    prevPage() {
+        if (this.state.pageno === 1)
             return;
-        this.prevPageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: this.state.pageno - 1}, function (response) {
+        this.prevPageRequest = $.get(BaseUrl + "questions/current/bypage", {
+            size: SizePerPage,
+            page: this.state.pageno - 1
+        }, function (response) {
             var totalpage = response.totalpages;
             this.setState({
                 items: response.data,
@@ -100,12 +109,15 @@ class Display extends Component {
         }.bind(this));
     }
 
-    nextPage(){
+    nextPage() {
         console.log("pageno: " + typeof  this.state.pageno);
         console.log("totalpage: " + typeof this.state.totalpage);
-        if(this.state.pageno === this.state.totalpage)
+        if (this.state.pageno === this.state.totalpage)
             return;
-        this.nextPageRequest = $.get(BaseUrl + "questions/current/bypage", {size: SizePerPage, page: this.state.pageno + 1}, function (response) {
+        this.nextPageRequest = $.get(BaseUrl + "questions/current/bypage", {
+            size: SizePerPage,
+            page: this.state.pageno + 1
+        }, function (response) {
             var totalpage = response.totalpages;
             this.setState({
                 items: response.data,
@@ -114,53 +126,55 @@ class Display extends Component {
             });
         }.bind(this));
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         this.questionsRequest.abort();
         //this.changePageRequest.abort();
     }
 
-    uploadImage(file){
-        var policy = this.state.policy;
-        var data = new FormData();
-        data.append("key", policy.dir + file.name);
-        data.append("policy", policy.policy);
-        data.append("OSSAccessKeyId", policy.accessid);
-        data.append("success_action_status", 200);
-        data.append("signature",policy.signature);
-        data.append("file", file);
-        $.ajax({
-            url: policy.host,
-            data: data,
-            processData: false,
-            cache: false,
-            async: true,
-            contentType: false,
-            //关键是要设置contentType 为false，不然发出的请求头 没有boundary
-            //该参数是让jQuery去判断contentType
-            type: "POST",
-            success: function (data, textStatus) {
-                if (textStatus === "success") {
-
-                    alert("success!");
-                } else {
-                    alert("upload image failed");
-                }
-            }
-        });
-    }
+    //uploadImage(file){
+    //    var policy = this.state.policy;
+    //    var data = new FormData();
+    //    data.append("key", policy.dir + file.name);
+    //    data.append("policy", policy.policy);
+    //    data.append("OSSAccessKeyId", policy.accessid);
+    //    data.append("success_action_status", 200);
+    //    data.append("signature",policy.signature);
+    //    data.append("file", file);
+    //    $.ajax({
+    //        url: policy.host,
+    //        data: data,
+    //        processData: false,
+    //        cache: false,
+    //        async: true,
+    //        contentType: false,
+    //        //关键是要设置contentType 为false，不然发出的请求头 没有boundary
+    //        //该参数是让jQuery去判断contentType
+    //        type: "POST",
+    //        success: function (data, textStatus) {
+    //            if (textStatus === "success") {
+    //
+    //                alert("success!");
+    //            } else {
+    //                alert("upload image failed");
+    //            }
+    //        }
+    //    });
+    //}
     render() {
         return (
             <div className="display-panel">
-                {this.state.showAdd ? <Add uploadImage={this.uploadImage}/> : null}
+                {/*this.state.showAdd ? <Add uploadImage={this.uploadImage}/> : null*/}
                 <div>
-                    <Button className="btn btn-green margin-left-0" icon="fa fa-trash fa-lg"/>
-                    <Button className="btn btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goEdit}/>
-                    <Button className="btn btn-green" icon="fa fa-external-link fa-lg" name="提交"/>
-                    <Button className="btn btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
-                            onClick={this.showAdd}/>
+                    {/* <Button className="my-btn my-btn-green margin-left-0" icon="fa fa-trash fa-lg"/> */}
+                    <Button className="my-btn my-btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goEdit}/>
+                    {/* <Button className="my-btn my-btn-green" icon="fa fa-external-link fa-lg" name="提交"/>
+                     <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
+                     onClick={this.showAdd}/>*/}
                 </div>
                 <DisplayTable ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
-                <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage} nextPage={this.nextPage}
+                <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage}
+                      nextPage={this.nextPage}
                       totalpage={this.state.totalpage}/>
             </div>
         )
@@ -170,7 +184,7 @@ class Display extends Component {
 
 Display.contextTypes = {
     router: React.PropTypes.object.isRequired
-}
+};
 
 export default Display;
 //export default withRouter(Display);

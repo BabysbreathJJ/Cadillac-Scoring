@@ -40,15 +40,15 @@ class Page extends Component{
         var pageno = this.props.pageno;
         var buttons = [];
         for(let i=1; i <= totalpage; i++){
-            var className = (i === pageno) ? "btn-page btn-selected" : "btn-page btn-green";
+            var className = (i === pageno) ? "my-btn-page my-btn-selected" : "my-btn-page my-btn-green";
             buttons.push((<Button key={i.toString()} className={className} name={i} onClick={() =>{this.props.changePage(i)}}/>));
 
         }
         return (
                     <div className="page">
-                        <Button className="btn-page btn-green" icon="fa fa-chevron-left" onClick={() => this.props.prevPage()}/>
+                        <Button className="my-btn-page my-btn-green" icon="fa fa-chevron-left" onClick={() => this.props.prevPage()}/>
                         {buttons}
-                        <Button className="btn-page btn-green" icon="fa fa-chevron-right" onClick={() => this.props.nextPage()}/>
+                        <Button className="my-btn-page my-btn-green" icon="fa fa-chevron-right" onClick={() => this.props.nextPage()}/>
                     </div>
 
                 );
