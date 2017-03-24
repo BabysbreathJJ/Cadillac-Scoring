@@ -114,7 +114,7 @@ class EditTable extends Component {
                                 </select>
                             </td>
                             <td width="7%">
-                                <select  onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.id}>
+                                <select name="region" onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.id}>
                                     {
 
                                         this.props.allRegions['1'].map((option, optionIndex)=>(
