@@ -48,7 +48,7 @@ class Edit extends Component {
             picurl3: '',
             index: -1,//记录删除图片的临时索引,
             allModules:[],
-            allRegions: []
+            allRegions: {}
             //allRegions: []
         };
     }
