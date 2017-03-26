@@ -102,7 +102,7 @@ class EditTable extends Component {
                             <td width="7%">
                                 {/*<input type="text" value={item.region.module.name}
                                  onChange={(event) => this.props.changeContent(2, index, event.target.value)}/>*/}
-                                <select  onChange={(event) => this.props.changeContent(2, index, event.target.value)} value={item.region.module.id}>
+                                <select  onChange={(event) => this.props.changeContent(2, index, event.target.value)} value={item.region.module.name}>
                                     {
 
                                         this.props.allModules.map((option, optionIndex)=>(
@@ -114,10 +114,11 @@ class EditTable extends Component {
                                 </select>
                             </td>
                             <td width="7%">
-                                <select name="region" onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.id}>
+                                <select  onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.name}>
                                     {
 
                                         this.props.allRegions[item.region.module.id].map((option, optionIndex)=>(
+
                                             <option key={optionIndex} value={option.id} >
                                                 {option.name}
                                             </option>
