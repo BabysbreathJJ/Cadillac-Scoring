@@ -49,9 +49,9 @@ class Modal extends Component {
                                                     <input type="text" value={item.name}
                                                            style={{width: '80%'}}
                                                            onChange={(event) => this.props.changeItem(index,event.target.value,item.id)}/>
-                                                    <Button className="my-btn my-btn-red my-btn-small"
+                                                    { /* <Button className="my-btn my-btn-red my-btn-small"
                                                             icon="fa fa-close fa-lg"
-                                                            onClick={this.props.deleteItem.bind(this,item.id,index)}/>
+                                                            onClick={this.props.deleteItem.bind(this,item.id,index)}/>*/ }
                                                 </div>
                                             )}
                                     </div>

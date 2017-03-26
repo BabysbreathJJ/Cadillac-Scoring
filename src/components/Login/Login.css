@@ -3,6 +3,7 @@
     margin: 0 auto;
     margin-top: 18%;
     margin-left: 10%;
+    width: 50%;
 }
 
 .login-input {
@@ -13,13 +14,14 @@
 
 .login-btn {
     width: 300px;
-    border-radius: 0;
+    /*border-radius: 10px;*/
     background-color: #8F001F;
+    height: 35px;
+    color: white;
+    margin: 0 10px;
 }
 
-.login a{
-    color: white;
-}
+
 .login a:hover{
     color: white;
 }
@@ -27,6 +29,7 @@
 .login-btn:hover{
     color: white;
     background-color: #ac2925;
+    cursor: pointer;
 }
 
 .login-text {

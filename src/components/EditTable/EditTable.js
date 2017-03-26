@@ -95,7 +95,7 @@ class EditTable extends Component {
 
                     this.props.items.map((item, index)=>(
                         <tr key={index}>
-                            <td width="7%"><input id={item.id} type="checkbox"
+                            <td width="6%"><input id={item.id} type="checkbox"
                                                   checked={this.state.selectedItems[item.id]?true: false}
                                                   onChange={this.handleChange.bind(this,item)}/><label
                                 htmlFor={item.id}>{(index + 1) + ((this.props.pageno - 1)) * 10}</label></td>
@@ -106,7 +106,7 @@ class EditTable extends Component {
                                     {
 
                                         this.props.allModules.map((option, optionIndex)=>(
-                                            <option key={optionIndex} value={option.id} selected={item.region.module.id == option.id}>
+                                            <option key={optionIndex} value={option.id}>
                                                 {option.name}
                                             </option>
                                         ))
@@ -117,8 +117,8 @@ class EditTable extends Component {
                                 <select name="region" onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.id}>
                                     {
 
-                                        this.props.allRegions['1'].map((option, optionIndex)=>(
-                                            <option key={optionIndex} value={option.id} selected={item.region.id == option.id}>
+                                        this.props.allRegions[item.region.module.id].map((option, optionIndex)=>(
+                                            <option key={optionIndex} value={option.id} >
                                                 {option.name}
                                             </option>
                                         ))
