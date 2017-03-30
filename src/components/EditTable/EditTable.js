@@ -163,7 +163,7 @@ class EditTable extends Component {
 
                                         {
                                             (item.picurl2 == '' || item.picurl2 == null) ?
-                                                <FileDropzone uploadImage={this.props.uploadImage} addr="picurl1"
+                                                <FileDropzone uploadImage={this.props.uploadImage} addr="picurl2"
                                                               src={item.picurl2}
                                                               onChange={(event) => this.props.changeContent(8, index)}
                                                               index={index}/> : <Picture addr="picurl2"

@@ -361,7 +361,7 @@ class Edit extends Component {
             data: data,
             processData: false,
             cache: false,
-            async: true,
+            //async: true,
             contentType: false,
             //关键是要设置contentType 为false，不然发出的请求头 没有boundary
             //该参数是让jQuery去判断contentType
@@ -379,10 +379,12 @@ class Edit extends Component {
                         this.setState({picurl3: picurl});
                     }
 
-                    console.log(this.state.index);
+
                     if (this.state.index != -1) {
                         let items = this.state.items;
+                        console.log(addr);
                         items[index][addr] = picurl;
+                        console.log(items);
                         this.setState({items: items});
                     }
 
