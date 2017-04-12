@@ -214,20 +214,22 @@ class Edit extends Component {
         let foundIndex = submitResult.findIndex(x=>x.id == items[index].id);
         switch (type) {
             case 2:
-                items[index].region.module.name = value;
+                items[index].region.module.id = value;
+                items[index].region.id = this.state.allRegions[value][0].id;
                 if (foundIndex == -1) {
                     submitResult.push(items[index]);
                 } else {
-                    submitResult[foundIndex].region.module.name = value;
+                    submitResult[foundIndex].region.module.id = value;
+                    submitResult[foundIndex].region.id = this.state.allRegions[value][0].id;
                 }
                 break;
             case 3:
                 console.log(value);
-                items[index].region.name = value;
+                items[index].region.id = value;
                 if (foundIndex == -1) {
                     submitResult.push(items[index]);
                 } else {
-                    submitResult[foundIndex].region.name = value;
+                    submitResult[foundIndex].region.id = value;
                 }
 
                 break;
@@ -359,7 +361,7 @@ class Edit extends Component {
             data: data,
             processData: false,
             cache: false,
-            async: true,
+            //async: true,
             contentType: false,
             //关键是要设置contentType 为false，不然发出的请求头 没有boundary
             //该参数是让jQuery去判断contentType
@@ -377,10 +379,12 @@ class Edit extends Component {
                         this.setState({picurl3: picurl});
                     }
 
-                    console.log(this.state.index);
+
                     if (this.state.index != -1) {
                         let items = this.state.items;
+                        console.log(addr);
                         items[index][addr] = picurl;
+                        console.log(items);
                         this.setState({items: items});
                     }
 
@@ -397,10 +401,16 @@ class Edit extends Component {
 
     deleteQuestion = function () {
         var selectedItems = this.state.selectedItems;
+
         var deleteIds = [];
         console.log(selectedItems);
         for (var key in selectedItems) {
             deleteIds.push({id: parseInt(key)});
+        }
+
+        if(deleteIds.length == 0){
+            alert("请选择要删除的信息!");
+            return;
         }
         //console.log(deleteIds);
         $.ajax({
@@ -431,6 +441,10 @@ class Edit extends Component {
     updateQuestions = function () {
         var updateItems = this.state.updateItems;
         console.log(updateItems);
+        if(updateItems.length == 0) {
+            alert("请选择要修改的信息!");
+            return;
+        }
         var myItems = [];
         for (var key in this.state.selectedItems) {
             let foundIndex = updateItems.findIndex(x=>x.id == key);
@@ -513,7 +527,7 @@ class Edit extends Component {
                 <div>
                     <Button className="my-btn my-btn-green margin-left-0" icon="fa fa-trash fa-lg"
                             onClick={this.deleteQuestion}/>
-                    <Button className="my-btn my-btn-green" icon="fa fa-pencil-square-o fa-lg"/>
+                    <Button className="my-btn my-btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goDisplay}/>
                     <Button className="my-btn my-btn-green" icon="fa fa-external-link fa-lg" name="提交"
                             onClick={this.updateQuestions}/>
                     <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"

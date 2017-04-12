@@ -7,11 +7,11 @@ import DisplayTable from '../DisplayTable/DisplayTable';
 import '../EditTable/EditTable.css';
 import '../Button/Button.css';
 import './Display.css'
-import Add from '../Add/Add'
+//import Add from '../Add/Add'
 import Page from '../Page/Page';
 import $ from 'jquery';
 import {BaseUrl, SizePerPage} from '../Constants/constants';
-import axios from 'axios';
+//import axios from 'axios';
 
 class Display extends Component {
     constructor(props) {
@@ -84,13 +84,13 @@ class Display extends Component {
                 totalpage: totalpage
             });
         }.bind(this));
-        this.policyRequest = $.get("http://112.74.49.183:8080/POSMPlatform/file/policy", function (response, status) {
-            // if(status === "success")
-            //     alert("get policy success");
-            this.setState({
-                policy: response
-            });
-        }.bind(this));
+        //this.policyRequest = $.get("http://112.74.49.183:8080/POSMPlatform/file/policy", function (response, status) {
+        //    // if(status === "success")
+        //    //     alert("get policy success");
+        //    this.setState({
+        //        policy: response
+        //    });
+        //}.bind(this));
     }
 
     prevPage() {
@@ -172,7 +172,7 @@ class Display extends Component {
                      <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
                      onClick={this.showAdd}/>*/}
                 </div>
-                <DisplayTable ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
+                <DisplayTable pageno={this.state.pageno} ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
                 <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage}
                       nextPage={this.nextPage}
                       totalpage={this.state.totalpage}/>

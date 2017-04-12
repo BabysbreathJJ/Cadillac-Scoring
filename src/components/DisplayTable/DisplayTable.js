@@ -55,8 +55,7 @@ class DisplayTable extends Component {
                 {
                     this.props.items.map((item, index)=>(
                         <tr key={index}>
-                            <td width="7%"><input id={item.id} type="checkbox" checked={this.state.selectedItems[item.id]?true: false} onChange={this.handleChange}/><label
-                                htmlFor={item.id}>{item.id}</label></td>
+                            <td width="5%">{(index + 1) + ((this.props.pageno - 1)) * 10}</td>
                             <td width="7%">{item.region.module.name}</td>
                             <td width="7%">{item.region.name}</td>
                             <td width="7%">{item.score}</td>
