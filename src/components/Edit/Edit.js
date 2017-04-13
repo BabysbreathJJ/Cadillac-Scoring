@@ -53,22 +53,25 @@ class Edit extends Component {
         };
     }
 
-    getSelectedItems(item, e) {
+    getSelectedItems( e) {
+        //console.log(index);
 
 
         var selectedItems = this.state.selectedItems;
         var submitResult = this.state.updateItems;
+        var items = this.state.items;
 
 
         var foundIndex = submitResult.findIndex(x=>x.id == e.target.id);
+        var foundIndexItems = items.findIndex(x=>x.id == e.target.id);
 
         if (e.target.checked) {
             selectedItems[e.target.id] = e.target.id;
 
             if (foundIndex == -1) {
-                submitResult.push(item);
+                submitResult.push(items[foundIndexItems]);
             } else {
-                submitResult[foundIndex] = item;
+                submitResult[foundIndex] = items[foundIndexItems];
             }
 
         }
@@ -215,6 +218,7 @@ class Edit extends Component {
         switch (type) {
             case 2:
                 items[index].region.module.id = value;
+                console.log(value);
                 items[index].region.id = this.state.allRegions[value][0].id;
                 if (foundIndex == -1) {
                     submitResult.push(items[index]);

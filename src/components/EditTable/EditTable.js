@@ -23,7 +23,7 @@ class EditTable extends Component {
         }
     }
 
-    handleChange(item, e) {
+    handleChange( e) {
 
         var selectedItems = this.state.selectedItems;
         //var submitResult = this.state.submitResult;
@@ -42,7 +42,8 @@ class EditTable extends Component {
 
         //var updateItems = {selectedItems: selectedItems, submitResult: submitResult};
         //this.props.callbackParent(updateItems);
-        this.props.callbackParent(item, e);
+        //console.log(index);
+        this.props.callbackParent(e);
 
     }
 
@@ -97,12 +98,12 @@ class EditTable extends Component {
                         <tr key={index}>
                             <td width="6%"><input id={item.id} type="checkbox"
                                                   checked={this.state.selectedItems[item.id]?true: false}
-                                                  onChange={this.handleChange.bind(this,item)}/><label
+                                                  onChange={this.handleChange.bind(this)}/><label
                                 htmlFor={item.id}>{(index + 1) + ((this.props.pageno - 1)) * 10}</label></td>
                             <td width="7%">
                                 {/*<input type="text" value={item.region.module.name}
                                  onChange={(event) => this.props.changeContent(2, index, event.target.value)}/>*/}
-                                <select  onChange={(event) => this.props.changeContent(2, index, event.target.value)} value={item.region.module.name}>
+                                <select  onChange={(event) => this.props.changeContent(2, index, event.target.value)} value={item.region.module.id}>
                                     {
 
                                         this.props.allModules.map((option, optionIndex)=>(
@@ -114,7 +115,7 @@ class EditTable extends Component {
                                 </select>
                             </td>
                             <td width="7%">
-                                <select  onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.name}>
+                                <select  onChange={(event) => this.props.changeContent(3, index, event.target.value)} value={item.region.id}>
                                     {
 
                                         this.props.allRegions[item.region.module.id].map((option, optionIndex)=>(
