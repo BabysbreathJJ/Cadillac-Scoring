@@ -23,7 +23,7 @@ class EditTable extends Component {
         }
     }
 
-    handleChange( e) {
+    handleChange(e) {
 
         var selectedItems = this.state.selectedItems;
         //var submitResult = this.state.submitResult;
