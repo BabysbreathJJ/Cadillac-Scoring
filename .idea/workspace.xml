@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ca8dde-6917-4d37-8145-e40c69b9699c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.8c72c1ab.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.8c72c1ab.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.a10530c2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.a10530c2.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/background.24b32a94.jpeg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Add/FileDropzone.js" afterPath="$PROJECT_DIR$/src/components/Add/FileDropzone.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Constants/constants.js" afterPath="$PROJECT_DIR$/src/components/Constants/constants.js" />
     </list>
     <ignored path="Cadillac-Scoring.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,27 +81,30 @@
         <entry file="file://$PROJECT_DIR$/src/components/Add/FileDropzone.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="90" selection-start-line="45" selection-start-column="90" selection-end-line="45" selection-end-column="90" />
-              <folding />
+              <caret line="46" column="88" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="88" />
+              <folding>
+                <marker date="1492053188000" expanded="true" signature="1071:1399" placeholder="&lt;xml/&gt;" />
+                <marker date="1492053188000" expanded="true" signature="1422:1591" placeholder="&lt;xml/&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Edit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Edit/Edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33294392">
-              <caret line="84" column="34" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="34" />
+            <state vertical-scroll-proportion="-20.0">
+              <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="constants.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Constants/constants.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.06795017">
+              <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -841,8 +839,11 @@
     <entry file="file://$PROJECT_DIR$/src/components/Add/FileDropzone.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="90" selection-start-line="45" selection-start-column="90" selection-end-line="45" selection-end-column="90" />
-          <folding />
+          <caret line="46" column="88" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="88" />
+          <folding>
+            <marker date="1492053188000" expanded="true" signature="1071:1399" placeholder="&lt;xml/&gt;" />
+            <marker date="1492053188000" expanded="true" signature="1422:1591" placeholder="&lt;xml/&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -862,14 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Constants/constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/EditTable/EditTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -880,8 +873,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Edit/Edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33294392">
-          <caret line="84" column="34" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="34" />
+        <state vertical-scroll-proportion="-20.0">
+          <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Constants/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06795017">
+          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
           <folding />
         </state>
       </provider>

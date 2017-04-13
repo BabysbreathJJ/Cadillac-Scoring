@@ -46,7 +46,7 @@ class FileDropzone extends Component {
                                                                   index={this.props.index}
                                                                   addr={this.props.addr}
                                                                   deletePic={this.deletePic}/> :
-                    <Dropzone onDrop={this.onDrop} className="display-inline-block" multiple={false}>
+                    <Dropzone onDrop={this.onDrop} className="display-inline-block" multiple={false} accept="image/*">
                         <DefaultPic />
                     </Dropzone>
                 }
