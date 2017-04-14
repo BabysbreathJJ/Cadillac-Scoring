@@ -445,7 +445,7 @@ class Edit extends Component {
     updateQuestions = function () {
         var updateItems = this.state.updateItems;
         console.log(updateItems);
-        if(updateItems.length == 0) {
+        if(updateItems.length == 0 || Object.keys(this.state.selectedItems).length == 0) {
             alert("请选择要修改的信息!");
             return;
         }
