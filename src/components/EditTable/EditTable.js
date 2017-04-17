@@ -100,8 +100,7 @@ class EditTable extends Component {
                                                   onChange={this.handleChange.bind(this,item)}/><label
                                 htmlFor={item.id}>{(index + 1) + ((this.props.pageno - 1)) * 10}</label></td>
                             <td width="7%">
-                                {/*<input type="text" value={item.region.module.name}
-                                 onChange={(event) => this.props.changeContent(2, index, event.target.value)}/>*/}
+                                
                                 <select  onChange={(event) => this.props.changeContent(2, index, event.target.value)} value={item.region.module.name}>
                                     {
 
