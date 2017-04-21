@@ -21,11 +21,10 @@ class Picture extends Component {
             <div className="display-inline-block pic">
                 { this.props.src ? <ImageZoom image={{
                                           src: this.props.src,
-                                          className: 'img',
+                                          className: 'img'
                                         }}
                                         zoomImage={{
-                                          src: this.props.src,
-                                          
+                                          src: this.props.src
                                         }}/> : null}
                 { this.props.edit ? <i className="fa fa-minus-circle delete-icon"
                                        onClick={this.deletePic}/> : null }

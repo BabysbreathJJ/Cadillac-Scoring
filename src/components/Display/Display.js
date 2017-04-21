@@ -11,6 +11,9 @@ import './Display.css'
 import Page from '../Page/Page';
 import $ from 'jquery';
 import {BaseUrl, SizePerPage} from '../Constants/constants';
+
+import Loading from 'react-loading';
+import loading from './loading.gif';
 //import axios from 'axios';
 
 class Display extends Component {
@@ -25,6 +28,7 @@ class Display extends Component {
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
         //this.uploadImage = this.uploadImage.bind(this);
+        this.createExcel = this.createExcel.bind(this);
         this.state = {
             showAdd: false,
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
@@ -33,7 +37,8 @@ class Display extends Component {
             pageno: 1,
             totalpage: 1,
             policy: {},
-
+            isLoading: false,
+            excelUrl : ''
         };
     }
 
@@ -127,6 +132,34 @@ class Display extends Component {
         }.bind(this));
     }
 
+
+    createExcel(){
+        this.setState({
+            isLoading:true,
+            excelUrl: ''
+        })
+        this.createExcelRequest = $.post(BaseUrl + "data/files")
+        .done(function(data){
+            console.log('data:' + data);
+            if(data.success){
+                this.setState({
+                    excelUrl: data.url,
+                    isLoading: false
+                });
+            }else{
+                this.setState({
+                    isLoading:false
+                });
+            }
+            }.bind(this))
+        .fail(function(){
+            this.setState({
+                isLoading:false
+            });
+        }.bind(this));
+    }
+
+
     componentWillUnmount() {
         this.questionsRequest.abort();
         //this.changePageRequest.abort();
@@ -171,6 +204,10 @@ class Display extends Component {
                     {/* <Button className="my-btn my-btn-green" icon="fa fa-external-link fa-lg" name="提交"/>
                      <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
                      onClick={this.showAdd}/>*/}
+                     <Button className="my-btn my-btn-red float-right" icon="" name="生成excel"
+                            onClick={this.createExcel}/>
+                    {this.state.isLoading ? <div className="loadingDiv"><img className='loadingImg' src={loading}/></div> : null}
+                    {this.state.excelUrl!=='' ? <a href={BaseUrl + this.state.excelUrl} className="my-btn my-btn-red float-right">下载excel</a>:null}
                 </div>
                 <DisplayTable pageno={this.state.pageno} ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
                 <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage}
