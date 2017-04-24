@@ -2095,7 +2095,7 @@ fb-watchman@^1.8.0, fb-watchman@^1.9.0:
   dependencies:
     bser "1.0.2"
 
-fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6:
+fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6, fbjs@^0.8.9:
   version "0.8.9"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.9.tgz#180247fbd347dcc9004517b904f865400a0c8f14"
   dependencies:
@@ -3350,6 +3350,10 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
+medium-zoom@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/medium-zoom/-/medium-zoom-0.1.3.tgz#16287d7f7e02f39358763ee22a5baee204f1ec01"
+
 memory-fs@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.2.0.tgz#f2bb25368bc121e391c2520de92969caee0a0290"
@@ -4120,6 +4124,12 @@ promise@7.1.1, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+prop-types@^15.5.8:
+  version "15.5.8"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
+  dependencies:
+    fbjs "^0.8.9"
+
 proxy-addr@~1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-1.1.3.tgz#dc97502f5722e888467b3fa2297a7b1ff47df074"
@@ -4233,6 +4243,14 @@ react-dropzone@^3.12.1:
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-3.12.2.tgz#7e66a37322a80cf26a205d749ecf8cad0d90aa6f"
   dependencies:
     attr-accept "^1.0.3"
+
+react-loading@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-0.0.9.tgz#e9fba6948915ba7742a508193828b6c73eb04956"
+
+react-medium-image-zoom@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-1.0.0.tgz#a722e516fae5337a6fdf0c2f557def389f6460f1"
 
 react-modal@^1.7.3:
   version "1.7.3"
