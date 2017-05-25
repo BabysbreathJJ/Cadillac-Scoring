@@ -29,6 +29,7 @@ class Display extends Component {
         this.nextPage = this.nextPage.bind(this);
         //this.uploadImage = this.uploadImage.bind(this);
         this.createExcel = this.createExcel.bind(this);
+        this.goDownload = this.goDownload.bind(this);
         this.state = {
             showAdd: false,
             ths: ['序号', '模块', '区域', '分值', '评价项目', '评价标准', '标准照片'],
@@ -77,6 +78,9 @@ class Display extends Component {
         }.bind(this));
     }
 
+    goDownload() {
+        this.props.router.push('/download');
+    }
     componentDidMount() {
         this.questionsRequest = $.get(BaseUrl + "questions/current/bypage", {
             size: SizePerPage,
@@ -201,6 +205,7 @@ class Display extends Component {
                 <div>
                     {/* <Button className="my-btn my-btn-green margin-left-0" icon="fa fa-trash fa-lg"/> */}
                     <Button className="my-btn my-btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goEdit}/>
+                    <Button className="my-btn my-btn-green" icon="" name="图片压缩包下载" onClick={this.goDownload}/>
                     {/* <Button className="my-btn my-btn-green" icon="fa fa-external-link fa-lg" name="提交"/>
                      <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
                      onClick={this.showAdd}/>*/}

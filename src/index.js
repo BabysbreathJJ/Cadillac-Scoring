@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import Display from './components/Display/Display';
 import Edit from './components/Edit/Edit'
-import Login from './components/Login/Login'
+import Login from './components/Login/Login';
+import Download from './components/Download/Download';
 
 const checkStatus = (nextState, replace,next) =>{
     var authorization = window.localStorage.getItem('authorization');
@@ -25,5 +26,6 @@ ReactDOM.render(
         <Router path="/login" component={Login}/>
         <Router path="/display" component={Display} onEnter={checkStatus}/>
         <Router path="/edit" component={Edit} onEnter={checkStatus}/>
+        <Router path="/download" component={Download} onEnter={checkStatus}/>
     </Router>,
     document.getElementById('root'));

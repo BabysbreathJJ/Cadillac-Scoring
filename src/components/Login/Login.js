@@ -54,6 +54,7 @@ class Login extends Component {
                     return;
                 }
                 window.localStorage.setItem("authorization", data.authorization);
+                //console.log(data.authorization);
                 window.localStorage.setItem("type", data.type);
                 this.props.router.push('/display');
 
