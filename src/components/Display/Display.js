@@ -205,14 +205,14 @@ class Display extends Component {
                 <div>
                     {/* <Button className="my-btn my-btn-green margin-left-0" icon="fa fa-trash fa-lg"/> */}
                     <Button className="my-btn my-btn-green" icon="fa fa-pencil-square-o fa-lg" onClick={this.goEdit}/>
-                    <Button className="my-btn my-btn-green" icon="" name="图片压缩包下载" onClick={this.goDownload}/>
+                    <Button className="my-btn my-btn-green float-right" icon="" name="图片压缩包下载" onClick={this.goDownload}/>
                     {/* <Button className="my-btn my-btn-green" icon="fa fa-external-link fa-lg" name="提交"/>
                      <Button className="my-btn my-btn-red float-right" icon="fa fa-pencil-square-o fa-lg" name="增加一题"
                      onClick={this.showAdd}/>*/}
                      <Button className="my-btn my-btn-red float-right" icon="" name="生成excel"
                             onClick={this.createExcel}/>
                     {this.state.isLoading ? <div className="loadingDiv"><img className='loadingImg' src={loading}/></div> : null}
-                    {this.state.excelUrl!=='' ? <a href={BaseUrl + this.state.excelUrl} className="my-btn my-btn-red float-right">下载excel</a>:null}
+                    {this.state.excelUrl!=='' ? <a href={BaseUrl + this.state.excelUrl} className="my-btn my-btn-red float-right" style={{textDecoration: 'none'}}>下载excel</a>:null}
                 </div>
                 <DisplayTable pageno={this.state.pageno} ths={this.state.ths} items={this.state.items} callbackParent={this.selectedItems}/>
                 <Page pageno={this.state.pageno} changePage={this.changePage} prevPage={this.prevPage}

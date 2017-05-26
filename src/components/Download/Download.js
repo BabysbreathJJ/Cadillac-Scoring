@@ -228,7 +228,7 @@ class Download extends Component{
                         <td>
                             <Button className="my-btn download-btn my-btn-green" icon="" name="生成图片压缩包" onClick={this.getPictureUrl}/>
                             {this.state.isLoading ? <div className="loadingDiv"><img className='loadingImg' src={loading}/></div> : null}
-                            {this.state.picUrl!=='' ? <a href={BaseUrl + this.state.picUrl} className="my-btn download-btn my-btn-red float-right">下载图片压缩包</a>:null}
+                            {this.state.picUrl!=='' ? <a href={BaseUrl + this.state.picUrl} className="my-btn download-btn my-btn-red float-right" style={{textDecoration: 'none'}}>下载图片压缩包</a>:null}
                         </td>
                     </tr>
                 </tbody>
